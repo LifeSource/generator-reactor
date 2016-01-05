@@ -16,13 +16,17 @@
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.1",
     "browser-sync": "^2.7.10",
+    "chai": "3.4.1",
     "cpx": "^1.2.1",
     "jshint": "^2.9.1-rc2",
     "jshint-stylish": "^1.0.2",
     "jsx-loader": "^0.13.2",
-    "mocha": "^2.2.5",
+    "mocha": "^2.3.4",
+    "npm-run-all": "^1.2.4",
     "react-router": "^0.13.3",
-    "rimraf": "^2.3.3"
+    "rimraf": "^2.3.3",
+    "should": "^7.0.4",
+    "webpack": "^1.9.4"
   },
   "dependencies": {
     "bootstrap": "^3.3.5",
