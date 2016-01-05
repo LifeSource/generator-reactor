@@ -46,6 +46,10 @@ module.exports = generators.Base.extend({
 
     writing: {
 
+        appStructure: function() {
+            this.directory("app", "./");
+        },
+
         settings: function () {
             this.directory("settings", "./");
         },
@@ -58,14 +62,10 @@ module.exports = generators.Base.extend({
             );
         },
 
-        scripts: function() {
-            this.copy("js/app.js", "./src/client/app/app.js");       
-        },
-
         html: function () {
             this.fs.copyTpl(
             this.templatePath("html/index.html"),
-            this.destinationPath("./src/client/index.html"),
+            this.destinationPath("./index.html"),
             { appName: this.config.get("appName") }
         );
         }
@@ -73,7 +73,7 @@ module.exports = generators.Base.extend({
     },
 
     install: function () {
-        this.installDependencies();
+      //  this.npmInstall();
     },
 
     end: function () {
