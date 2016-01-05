@@ -1,28 +1,30 @@
-var config = require("./config")();
+var config = require("./config")(),
+    WebpackNotification = require("webpack-notifier");
 
 module.exports = {
 
-    entry: [
-        { bundle: config.src + "main.js" }
-    ],
+    entry: {
+        main: [
+            config.src + "/index.js"
+        ]
+    },
+    devtool: "exec-source-map",
     output: {
-
         path: config.dist,
         filename: "[name].bundle.js"
     },
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loaders: ["babel"],
-                include: [config.src, config.test]
-            },
-            {
-                test: /\.jsx$/,
-                loaders: ["babel-loader", "jsx-loader"],
-                include: [config.src, config.test]
+                test: /\.jsx?$/,
+                loader: "babel-loader",
+                include: [config.src, config.test],
+                exclude: [config.nodeModules]
             }
         ]
-    }
+    },
+    plugins: [
+        new WebpackNotification()
+    ]
 
 };

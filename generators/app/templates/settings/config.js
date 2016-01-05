@@ -1,165 +1,32 @@
-module.exports = function () {
+var path = require("path");
 
-    var port = process.env.PORT || 3000,
-    	env = process.env.NODE_ENV || "dev";
+module.exports = function() {
 
-    var root = "./",
-    	src = root + "src/",
-    	client = src + "client/",
-    	clientApp = client + "app/",
-    	css = client + "css/",
-    	styles = client + "styles/",
-    	images = client + "images/",
-        transpiled = client + "transpiled/",
-    	server = src + "server/",
-    	build = root + "dist/",
-    	temp = root+ "tmp/",
-        report = root + "report/",
-        specRunnerFile = "specs.html",
-        wiredep = require('wiredep'),
-        bowerFiles = wiredep({devDependencies: true})['js'], // jshint ignore:line
-    	nodeModules = root + "node_modules/",
-        jspmPackages = root + "jspm_packages/",
-    	bowerComponents = root + "bower_components/",
-    	ignore = [nodeModules, bowerComponents];
+        "use strict";
 
-    var config = {
-    	// Environment
-    	env: env,
-    	port: port,
-    	// Paths
-    	root: root,
-    	src: src,
-    	temp: temp,
-    	build: build,
-        report: report,
-    	css: css,
-    	fonts:[
-             bowerComponents + "font-awesome/fonts/**/*.*",
-             bowerComponents + "bootstrap/fonts/**/*.*",
-        ],
-    	html: clientApp + "**/*.html",
-    	htmlTemplates: clientApp + "**/*.html",
-    	images: images + "**/*.*",
-    	client: client,
-    	clientApp: clientApp,
-        transpiled: transpiled,
-        transpiledJS: transpiled + "**/*.js",
-    	styles: styles + "**/*.styl",
-    	server: server,
-    	// Files
-    	nodeServer: server + "server.js",
-    	index: client + "index.html",
-        buildIndex: build + "index.html",
-    	siteCss: css + "site.css",
-    	// JavaScripts
-    	allJs: [
-    		clientApp + "**/*.js",
-    		client + "**/*.js",
-    		root + "*.js"
-    	],
-    	js: [
-    		clientApp + "**/*.module.js",
-    		clientApp + "**/*.service.js",
-            "!" + clientApp + "**/*.spec.js",
-    		client + "**/*.js"
-    	],
-    	// Optimized files
-    	optimized: {
-    		app: "app.js",
-    		lib: "lib.js"
-    	},
-    	// Template Cache
-    	templateCache: {
-    		file: "templates.js",
-    		options: {
-    			module: "app.core",
-    			standAlone: false,
-    			root: "app/"
-    		}
-    	},
-    	// Bower and NPM
-    	nodeModules: nodeModules,
-    	bowerComponents: bowerComponents,
-    	bower: {
-    		json: root + "bower.json",
-    		directory: bowerComponents,
-    		ignorePath: "../.."
-    	},
-    	packages: [
-    		"./package.json",
-    		"./bower.json"
-    	],
-    	// Browser Sync
-    	browserReloadDelay: 1000,
-        /**
-         * specs.html, our HTML spec runner
-         */
-        specRunner: client + specRunnerFile,
-        specRunnerFile: specRunnerFile,
+        var port = process.env.PORT || 3000,
+            env = process.env.NODE_ENV || "dev";
 
-        /**
-         * The sequence of the injections into specs.html:
-         *  1 testlibraries
-         *      mocha setup
-         *  2 bower
-         *  3 js
-         *  4 spechelpers
-         *  5 specs
-         *  6 templates
-         */
-        testlibraries: [
-            nodeModules + '/mocha/mocha.js',
-            nodeModules + '/chai/chai.js',
-            nodeModules + '/sinon-chai/lib/sinon-chai.js'
-        ],
-        specHelpers: [client + 'test-helpers/*.js'],
-        specs: [clientApp + '**/*.spec.js'],
-        serverIntegrationSpecs: [client + '/tests/server-integration/**/*.spec.js']
-    };
+        var root = path.resolve(__dirname, "./"),
+            src = path.resolve(__dirname, "src"),
+            dist = path.resolve(__dirname, "dist"),
+            test = path.resolve(__dirname, "test"),
+            nodeModules = path.resolve(__dirname, "node_modules");
 
-    config.getWiredepDefaultOptions = function () {
-    	var options = {
-    		json: config.bower.json,
-    		directory: config.bower.directory,
-    		ignorePath: config.bower.ignorePath
-    	};
-
-    	return options;
-    };
-
-    /**
-     * karma settings
-     */
-    config.karma = getKarmaOptions();
-
-    return config;
-
-    ////////////////
-
-    function getKarmaOptions() {
-        var options = {
-            files: [].concat(
-                bowerFiles,
-                config.specHelpers,
-                clientApp + '**/*.module.js',
-                clientApp + '**/*.js',
-                temp + config.templateCache.file,
-                config.serverIntegrationSpecs
-            ),
-            exclude: [],
-            coverage: {
-                dir: report + 'coverage',
-                reporters: [
-                    // reporters not supporting the `file` property
-                    {type: 'html', subdir: 'report-html'},
-                    {type: 'lcov', subdir: 'report-lcov'},
-                    {type: 'text-summary'} //, subdir: '.', file: 'text-summary.txt'}
-                ]
-            },
-            preprocessors: {}
+        var config = {
+            env: env,
+            port: port,
+            // Paths
+            root: root,
+            src: src,
+            dist: dist,
+            fonts: [],
+            test: test,
+            // Files
+            index: root + "index.html",
+            nodeModules: nodeModules,
+            packages: ["./package.json"]
         };
-        options.preprocessors[clientApp + '**/!(*.spec)+(.js)'] = ['coverage'];
-        return options;
-    }
+
+        return config;
 };
