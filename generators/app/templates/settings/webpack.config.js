@@ -4,14 +4,14 @@ var config = require("./config")(),
 module.exports = {
 
     entry: {
-        main: [
+        app: [
             config.src + "/index.js"
         ]
     },
     devtool: "exec-source-map",
     output: {
         path: config.dist,
-        filename: "[name].bundle.js"
+        filename: "/js/[name].bundle.js"
     },
     module: {
         loaders: [
@@ -20,6 +20,10 @@ module.exports = {
                 loader: "babel-loader",
                 include: [config.src, config.test],
                 exclude: [config.nodeModules]
+            },
+            {
+                test: /\.styl$/,
+                loader: "style-loader!css-loader!stylus-loader"
             }
         ]
     },

@@ -25,7 +25,20 @@ module.exports = function() {
             // Files
             index: root + "index.html",
             nodeModules: nodeModules,
-            packages: ["./package.json"]
+            packages: ["./package.json"],
+            // Karma
+            karma: {
+                files: test + "/index.js",
+                exclude: [
+                    nodeModules
+                ],
+                preprocessors: {
+
+
+                }
+
+            }
+
         };
 
         return config;
