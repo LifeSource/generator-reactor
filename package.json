@@ -1,0 +1,29 @@
+{
+  "name": "generator-reactor",
+  "version": "1.0.0",
+  "description": "A yeoman generator for ReactJS development using ES2016.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LifeSource/generator-reactor.git"
+  },
+  "keywords": [
+    "React",
+    "Yeoman"
+  ],
+  "author": "Kenrick Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LifeSource/generator-reactor/issues"
+  },
+  "homepage": "https://github.com/LifeSource/generator-reactor#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "yeoman-generator": "^0.22.2",
+    "yosay": "^1.1.0"
+  },
+  "devDependencies": {}
+}
