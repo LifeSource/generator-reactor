@@ -1,6 +1,6 @@
 "use strict";
 
-var generators  = require("yeoman-generator"),
+var generators = require("yeoman-generator"),
     _ = require("lodash"),
     path = require('path'),
     yosay = require('yosay'),
@@ -9,38 +9,43 @@ var generators  = require("yeoman-generator"),
 
 module.exports = generators.Base.extend({
 
-    constructor: function () {
+    constructor: function() {
 
         generators.Base.apply(this, arguments);
 
-        this.argument('appName', { type: String, required: false });
+        this.argument('appName', {
+            type: String,
+            required: false
+        });
         this.appName = _.camelCase(this.appName);
 
     },
 
-    initializing: function () {
+    initializing: function() {
         this.log(yosay("Welcome to my ReactJS generator!"));
     },
 
-    prompting: function () {
+    prompting: function() {
 
         var done = this.async();
-        if (this.appName) { return; }
+        if (this.appName) {
+            return;
+        }
 
         var prompts = [config.appNamePrompt];
 
-        this.prompt(prompts, function (answers) {
+        this.prompt(prompts, function(answers) {
             this.config.set("appName", answers.appName);
             this.config.save();
             done();
         }.bind(this));
     },
 
-    configuring: function () {
+    configuring: function() {
 
     },
 
-    default: function () {
+    default: function() {
 
     },
 
@@ -50,33 +55,44 @@ module.exports = generators.Base.extend({
             this.directory("app", "./");
         },
 
-        settings: function () {
+        settings: function() {
             this.directory("settings", "./");
         },
 
-        packageJson: function () {
+        packageJson: function() {
             this.fs.copyTpl(
                 this.templatePath("json/_package.json"),
-                this.destinationPath("./package.json"),
-                { appName: this.config.get("appName") }
+                this.destinationPath("./package.json"), {
+                    appName: this.config.get("appName")
+                }
             );
         },
 
-        html: function () {
+        html: function() {
             this.fs.copyTpl(
-            this.templatePath("html/index.html"),
-            this.destinationPath("./index.html"),
-            { appName: this.config.get("appName") }
-        );
+                this.templatePath("html/index.html"),
+                this.destinationPath("./src/index.html"), {
+                    appName: this.config.get("appName")
+                }
+            );
+        },
+
+        database: function() {
+            this.fs.copyTpl(
+                this.templatePath("app/server/database.js"),
+                this.destinationPath("./server/database.js"), {
+                    appName: this.config.get("appName")
+                }
+            );
         }
 
     },
 
-    install: function () {
+    install: function() {
         this.npmInstall();
     },
 
-    end: function () {
+    end: function() {
         this.log(chalk.green.bold("\n----->>> Mission Accomplished! <<<-----\n"));
     }
 

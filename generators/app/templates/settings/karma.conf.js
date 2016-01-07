@@ -26,6 +26,12 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: setting.karma.preprocessors,
+        babelPreprocessor: {
+            options: {
+                presets: ["react", "es2015", "stage-0"],
+                sourceMap: "inline"
+            }
+        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress', 'coverage'
@@ -38,11 +44,11 @@ module.exports = function(config) {
         },
 
         webpack: {
+            devtool: "inline-source-map",
             module: {
                 loaders: webpackConfig.module.loaders
 
             }
-
         },
 
         webpackServer: {

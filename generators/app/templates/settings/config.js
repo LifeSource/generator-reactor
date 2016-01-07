@@ -10,7 +10,7 @@ module.exports = function() {
         var root = path.resolve(__dirname, "./"),
             src = path.resolve(__dirname, "src"),
             dist = path.resolve(__dirname, "dist"),
-            test = path.resolve(__dirname, "test"),
+            tests = path.resolve(__dirname, "tests"),
             nodeModules = path.resolve(__dirname, "node_modules");
 
         var config = {
@@ -21,22 +21,18 @@ module.exports = function() {
             src: src,
             dist: dist,
             fonts: [],
-            test: test,
+            tests: tests,
             // Files
             index: root + "index.html",
             nodeModules: nodeModules,
             packages: ["./package.json"],
             // Karma
             karma: {
-                files: test + "/index.js",
-                exclude: [
-                    nodeModules
-                ],
+                files: tests + "/index.js",
+                exclude: [ nodeModules ],
                 preprocessors: {
-
-
+                    "tests/index.js": ["webpack", "sourcemap"]
                 }
-
             }
 
         };

@@ -1,11 +1,5 @@
 "use strict";
 
-var mocha = require("mocha"),
-    chai = require("chai"),
-    expect = chai.expect;
-
-chai.should();
-
 describe("Dummy Spec", () => {
 
     describe("should work with ES6 + 7 features.", () => {
