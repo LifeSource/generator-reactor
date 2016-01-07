@@ -85,7 +85,6 @@ module.exports = generators.Base.extend({
                 }
             );
         }
-
     },
 
     install: function() {
