@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm-run-all --parallel serve watch:**",
+    "start": "npm-run-all --parallel serve watch:**",
     "clean": "rimraf dist",
     "make": "npm-run-all make:**",
     "make:dist": "mkdirp dist",
@@ -17,6 +17,7 @@
     "watch:js": "npm run build:js -- --watch",
     "preserve": "npm run build",
     "serve": "node server/server.js",
+    "dev": "npm run build && browser-sync start --files='dist/**/*.*' --server dist",
     "prod": "NODE_ENV=production npm run serve",
     "lint": "eslint src/**/*.js*",
     "pretest": "npm run lint",
