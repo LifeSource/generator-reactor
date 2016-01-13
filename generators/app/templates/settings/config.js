@@ -33,7 +33,14 @@ module.exports = function() {
                 preprocessors: {
                     "tests/index.js": ["webpack", "sourcemap"]
                 }
-            }
+            },
+            specRunnerFile: tests + "specs.html",
+            testLibraries: [
+                "../node_modules/mocha/mocha.js",
+                "../node_modules/chai/chai.js",
+                "../node_modules/mocha-clean/index.js",
+                "../node_modules/sinon-chai/lib/sinon-chai.js"
+            ]
 
         };
 
