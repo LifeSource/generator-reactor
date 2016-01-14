@@ -37,10 +37,9 @@
         "no-undef": 2,
         "no-undef-init": 2,
         "no-use-before-define": 2,
-        "quotes": [2, "double"]
-        "yoda": 2,
-
-    }
+        "quotes": [2, "double"],
+        "yoda": 2
+    },
     "env": {
         "browser": true,
         "node": true,
@@ -55,6 +54,6 @@
         "qunit": false,
         "jquery": true,
         "mongo": true,
-        "es6" true
+        "es6": true
     }
 }
