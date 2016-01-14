@@ -10,8 +10,8 @@ require("../styles/site.styl");
 
 export default class Index extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -19,7 +19,7 @@ export default class Index extends React.Component {
         return (
             <div>
                 <header>
-                    <img className="logo" src="images/reactlogo.png" alt="react's logo"/>
+                    <img className="logo" src="/images/reactlogo.png" alt="react's logo"/>
                     <ul className="nav-list">
                         <li>
                             <Link to="/home">Home</Link>
