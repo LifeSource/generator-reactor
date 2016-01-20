@@ -14,7 +14,7 @@ module.exports = {
             config.src + "/index.js"
         ]
     },
-    devtool: "source-map",
+    //devtool: "source-map",
     output: {
         path: config.dist,
         filename: "/js/[name].bundle.js"
@@ -27,8 +27,8 @@ module.exports = {
                 include: [config.src, config.tests],
                 exclude: [config.nodeModules],
                 query: {
-                     plugins: ['transform-runtime'],
-                     presets: ['es2015', 'stage-0', 'react']
+                     plugins: ["transform-runtime"],
+                     presets: ["es2015", "stage-0", "react"]
                 }
             },
             {

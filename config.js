@@ -15,42 +15,8 @@ module.exports = function () {
             name: "appName",
             message: "Please enter your app name: ",
             default: path.basename(process.cwd())
-        },
-        frameworkPrompt: {
-            type: "list",
-            name: "framework",
-            message: "Which client side framework would you like to use?:",
-            choices: [
-                { name: "none", value: "none" },
-                { name: "aurelia", value: "aurelia" },
-                { name: "angular", value: "angular" },
-                { name: "react", value: "react" }
-            ]
         }
-
-    };
-
-    config.getAureliaOptions = function() {
-    
-        var options =[
-            { 
-                name: "aurelia",
-                setup: { desc: "Uses the Aurelia development setup.", type: String}
-            },
-            {
-                name: "angular",
-                setup: { desc: "Uses the Angular development setup.", type: String}
-            },
-            {
-                name: "react",
-                setup: { desc: "Uses the React development setup.", type: String}
-            }
-        ];
-
-        return options;
     };
 
     return config;
-
-
 };

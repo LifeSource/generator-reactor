@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all serve watch:**",
+    "start": "npm-run-all --parallel serve watch:**",
     "clean": "rimraf dist",
     "make": "npm-run-all make:**",
     "make:dist": "mkdirp dist",

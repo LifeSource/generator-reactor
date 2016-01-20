@@ -2,9 +2,9 @@
 
 var generators = require("yeoman-generator"),
     _ = require("lodash"),
-    path = require('path'),
-    yosay = require('yosay'),
-    chalk = require('chalk'),
+    path = require("path"),
+    yosay = require("yosay"),
+    chalk = require("chalk"),
     config = require("../../config")();
 
 module.exports = generators.Base.extend({
@@ -13,10 +13,7 @@ module.exports = generators.Base.extend({
 
         generators.Base.apply(this, arguments);
 
-        this.argument('appName', {
-            type: String,
-            required: false
-        });
+        this.argument("appName", { type: String, required: false });
         this.appName = _.camelCase(this.appName);
 
     },
