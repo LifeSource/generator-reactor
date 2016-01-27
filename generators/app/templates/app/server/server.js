@@ -21,8 +21,13 @@ app.use(express.static(config.dist));
 app.use("/*", express.static(config.dist + config.index));
 
 if (config.env === "dev") {
+
     var browserSync = require("browser-sync");
-    browserSync.init({ server: config.dist });
+
+    if (!browserSync.active) {
+        browserSync.init({ server: config.dist });
+    }
+
     browserSync.watch(config.dist + "**/*.*").on("change", browserSync.reload);
 }
 

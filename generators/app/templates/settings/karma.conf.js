@@ -1,15 +1,15 @@
-var setting = require('./config')(),
+var setting = require("./config")(),
     webpackConfig = require("./webpack.config.js");
 
 module.exports = function(config) {
 
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: './',
+        basePath: "./",
 
         // frameworks to use
         // some available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha', 'chai', 'sinon', 'chai-sinon'],
+        frameworks: ["mocha", "chai", "sinon", "chai-sinon"],
 
         // list of files / patterns to load in the browser
         files: [
@@ -20,7 +20,7 @@ module.exports = function(config) {
         exclude: setting.karma.exclude,
 
         proxies: {
-            '/': 'http://localhost:8888/'
+            "/": "http://localhost:8888/"
         },
 
         // preprocess matching files before serving them to the browser
@@ -34,9 +34,9 @@ module.exports = function(config) {
         },
 
         // test results reporter to use
-        // possible values: 'dots', 'progress', 'coverage'
+        // possible values: "dots", "progress", "coverage"
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'coverage'],
+        reporters: ["progress", "coverage"],
 
         coverageReporter: {
             // dir: gulpConfig.karma.coverage.dir,
@@ -71,8 +71,8 @@ module.exports = function(config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        //        browsers: ['Chrome', 'ChromeCanary', 'FirefoxAurora', 'Safari', 'PhantomJS'],
-        browsers: ['PhantomJS'],
+        //        browsers: ["Chrome", "ChromeCanary", "FirefoxAurora", "Safari", "PhantomJS"],
+        browsers: ["PhantomJS"],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
