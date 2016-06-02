@@ -2,11 +2,11 @@ import React from "react";
 import { render } from "react-dom";
 import { Router, Route, Link, browserHistory } from "react-router";
 
-import Home from "./home/home.js";
-import About from "./about/about.js";
+import Home from "./home/home";
+import About from "./about/about";
 
-require("../styles/layout.styl");
-require("../styles/site.styl");
+require("../styles/layout");
+require("../styles/site");
 
 export default class Index extends React.Component {
 
@@ -21,16 +21,12 @@ export default class Index extends React.Component {
                 <header>
                     <img className="logo" src="/images/reactlogo.png" alt="react's logo"/>
                     <ul className="nav-list">
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
+                        <li> <Link to="/home">Home</Link> </li>
+                        <li> <Link to="/about">About</Link> </li>
                     </ul>
                 </header>
                 <div clasName="main">{this.props.children}</div>
-            </div>            
+            </div>
         );
     }
 }

@@ -36,13 +36,16 @@ module.exports = {
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader")
             },
             {
-                test: /\.styl$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!stylus-loader")
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader")
             }
         ]
     },
     postcss: function() {
-        return [autoprefixer({ browsers: "last 2 version" }), precss];    
+        return [autoprefixer({ browsers: "last 2 version" }), precss];
+    },
+    resolve: {
+        extensions: ["", ".js", ".jsx", ".css", ".scss"]
     },
     plugins: [
         new Webpack.optimize.UglifyJsPlugin({ minimize: true }),
