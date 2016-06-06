@@ -1,13 +1,12 @@
 import React, { PropTypes } from "react";
 import { render } from "react-dom";
 import { Router, Route, Link, browserHistory } from "react-router";
-
-import Home from "./home/home";
-import About from "./about/about";
+import { Home, About } from './components/pages';
+import { Main } from './components/layout/';
 
 require("../styles/site");
 
-export default class Index extends React.Component {
+export default class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -17,14 +16,7 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        <header>
-          <img className="logo" src="/images/reactlogo.png" alt="react's logo"/>
-          <ul className="nav-list">
-            <li> <Link to="/home">Home</Link> </li>
-            <li> <Link to="/about">About</Link> </li>
-          </ul>
-        </header>
-        <div clasName="main">{this.props.children}</div>
+        <Main/>
       </div>
     );
   }
@@ -32,7 +24,7 @@ export default class Index extends React.Component {
 
 const routes = {
   path: "/",
-  component: Index,
+  component: Main,
   indexRoute: { component: Home },
   childRoutes: [
     { path: "home", component: Home },
