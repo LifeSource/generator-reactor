@@ -49,13 +49,16 @@
     "precss": "^1.4.0",
     "rimraf": "^2.3.3",
     "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.9.4",
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "body-parser": "^1.14.2",
+    "express": "^4.13.4",
     "history": "^1.17.0",
+    "mongoose": "^4.4.20",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
     "react-router": "^1.0.3"
